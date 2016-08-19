@@ -12,5 +12,5 @@ What's inside
 
 License
 -------
-MIT License
-[Kohana](http://kohanaframework.org/)
+* MIT License
+* [Kohana](http://kohanaframework.org/) License
