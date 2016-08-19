@@ -1,0 +1,31 @@
+
+default root folder is 'zonekohana'
+to edit :
+
+=====================================
+
+edit .htaccess :
+================
+# Installation directory
+RewriteBase /zonekohana/
+
+edit bootstrap.php :
+================================
+Kohana::init(array(
+	'base_url'   => '/zonekohana/',
+));
+
+edit this path too :
+==================
+>>>> zonekohana\application\config\url.php
+>>>> zonekohana\modules\database\config\database.php
+
+How to use : 
+==================
+>>>> http://localhost/zonekohana/
+>>>> http://localhost/zonekohana/form
+>>>> http://localhost/zonekohana/menu
+
+DB name : 
+===================
+db_collection.sql

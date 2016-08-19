@@ -1,0 +1,132 @@
+@charset "utf-8";
+/* CSS Document */
+
+.placeholder {
+            outline: 1px dashed #4183C4;
+        }
+
+body{
+    margin: 10px;
+}
+
+#sort{
+    margin: 10px;
+    border: 1px solid black;
+}
+.center{
+    text-align: center;
+}
+
+a {
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif ;
+    font-weight: normal;
+    font-size: 12px;
+    color: #00F;
+    vertical-align:text-top;
+}
+ 
+img {
+    border: 0;
+}
+ 
+label {
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif ;
+    font-weight: normal;
+    font-size: 12px;
+}
+ 
+input {
+    border: 1px solid #000;
+}
+ 
+select {
+    width:185px;
+}
+ 
+td,th{
+    padding: 5px;
+} 
+
+table.editor
+{
+    text-align: center;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif ;
+    font-weight: normal;
+    font-size: 11px;
+    color: #fff;
+    width: 280px;
+    background-color: #666;
+    border: 0px;
+    border-collapse: collapse;
+    border-spacing: 0px;
+}
+ 
+table.editor td.editor_title
+{
+    background-color: #666;
+    color: #fff;
+    padding: 4px;
+    text-align: left;
+    font-weight: bold;
+    font-size: 16px;
+} 
+ 
+table.editor td
+{
+    padding: 4px;
+} 
+ 
+table.list
+{
+    text-align: center;
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif ;
+    font-weight: normal;
+    font-size: 11px;
+    color: #fff;
+    width: 280px;
+    background-color: #666;
+    border: 0px;
+    border-collapse: collapse;
+    border-spacing: 0px;
+}
+ 
+table.list td.item
+{
+    background-color: #CCC;
+    color: #000;
+    padding: 4px;
+    text-align: left;
+    border: 1px #fff solid;
+}
+ 
+table.list td.list_title,table.list td.headers
+{
+    background-color: #666;
+    color: #fff;
+    padding: 4px;
+    text-align: left;
+    border-bottom: 2px #fff solid;
+    font-weight: bold;
+} 
+ 
+table.list td.list_title
+{
+    font-size: 16px;
+} 
+ 
+table.list td.headers
+{
+    font-size: 12px;
+}
+
+#footer
+{
+    margin-top: 10px;
+    background-color: black;
+    color: #fff;
+}
+
+#footer a{
+    color: gray;
+    font-weight: bolder;
+}
