@@ -9,58 +9,13 @@ class Controller_Jsontest extends Controller {
 		parent::__construct($request, $response);
 
 		//model object
-		$this->model_menu = Model::factory('Menus');
+		$this->model_menu = Model::factory('Mdjsons');
 	}
 	
 	public function action_index()
 	{
-		//set input to null
-		$data = array(
-			'menuadd' => ''
-			);
 
-		//insert <start>
-		if($posted = $this->request->post())
-		{
-			//insert validation
-			$validation = Validation::factory($this->request->post())
-			->rule('menuadd', 'not_empty')
-            ->rule('menuadd', 'min_length', array(':value', 1));
-
-            if($validation->check())
-            {
-            	//check maximum orderlist
-            	$maxi = $this->model_menu->max_orderlist();
-
-            	$data = array(
-            		'menu' => $posted['menuadd'],
-            		'orderlist' => $maxi+1,
-            		'levels' => 0,
-            		'parents' => $posted['menuadd']
-            		);
-
-            	//check maximum orderlist
-            	$results = $this->model_menu->insert_menu($data);
-            	HTTP::redirect('menu');
-            }
-		} //end of insert
-
-		//get all menu - order by orderlist
-		$res = $this->model_menu->get_list();
-		$menuall = $res->execute();
-		
-		//for information page - order by id
-		$menuid = $this->model_menu->get_list_id();
-
- 		$row = $res->as_object()->execute();
-
-		//view
-		$view = View::factory('zone/testing')
-		->set('menuorder',$menuall)
-		->set('menuorderObject', $row)
-		->set('menuid',$menuid)
-		->bind('posted', $data);
-
+		$view = View::factory('zone/testjson');
 		$this->response->body($view);
 	} // End action_index
 

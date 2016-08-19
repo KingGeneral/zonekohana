@@ -16,15 +16,13 @@
     </head>
     <body>
         <h1>Testing Json</h1>
-
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-            
-        </div>
+        <hr/>
 
         <!-- first -->
-        <script type="text/javascript">
-            var x = 0;
-        </script>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <pre id="test1"></pre>
+            <button type="button" class="btn btn-primary" id="btn-test1">Test-1</button>
+        </div>
 
         <!--script-->
         <script type="text/javascript">
@@ -34,8 +32,7 @@
         <?php echo HTML::script('assets/js/jquery/jquery-1.12.4.js') ?>
         <?php echo HTML::script('assets/js/jquery/jquery-ui.min.js') ?>
         <?php echo HTML::script('assets/js/bootstrap-3.3.7-dist/js/bootstrap.js') ?>
-        <?php //echo HTML::script('assets/js/jquery.mjs.nestedSortable.js') ?>
-        <?php //echo HTML::script('assets/js/testsend.js') ?>
+        <?php echo HTML::script('assets/js/testjsonjs.js') ?>
         
     </body>
 </html>
