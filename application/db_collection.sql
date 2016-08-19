@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 19, 2016 at 04:41 AM
+-- Generation Time: Aug 19, 2016 at 12:09 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.23
 
@@ -19,6 +19,28 @@ SET time_zone = "+00:00";
 --
 -- Database: `db_collection`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mdjsons`
+--
+
+CREATE TABLE `mdjsons` (
+  `id` int(3) NOT NULL,
+  `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `street` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `phone` int(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `mdjsons`
+--
+
+INSERT INTO `mdjsons` (`id`, `name`, `street`, `phone`) VALUES
+(1, 'John', 'Doe', 555),
+(2, 'Anna', 'Tram', 532),
+(3, 'Poet', 'Era', 125);
 
 -- --------------------------------------------------------
 
@@ -92,6 +114,12 @@ INSERT INTO `productions` (`id`, `username`, `product`, `quantity`, `created_at`
 --
 
 --
+-- Indexes for table `mdjsons`
+--
+ALTER TABLE `mdjsons`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `menus`
 --
 ALTER TABLE `menus`
@@ -107,6 +135,11 @@ ALTER TABLE `productions`
 -- AUTO_INCREMENT for dumped tables
 --
 
+--
+-- AUTO_INCREMENT for table `mdjsons`
+--
+ALTER TABLE `mdjsons`
+  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `menus`
 --

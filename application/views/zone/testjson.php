@@ -20,8 +20,14 @@
 
         <!-- first -->
         <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <button type="button" class="btn btn-primary" id="btn-test1">Test-1-jsonparse</button>
             <pre id="test1"></pre>
-            <button type="button" class="btn btn-primary" id="btn-test1">Test-1</button>
+            
+            <button type="button" class="btn btn-primary" id="btn-test2">Test-2-testArray</button>
+            <pre id="test2"></pre>
+            
+            <button type="button" class="btn btn-primary" id="btn-test3">Test-3-Call DB</button>
+            <pre id="test3"></pre>
         </div>
 
         <!--script-->

@@ -9,4 +9,9 @@ class Model_Mdjsons extends Kohana_Model
 		//model
 	}
 
+	public function get_list(){
+		$results = DB::select()->from($this->table_name)->order_by('id', 'asc');
+		return $results;
+	}
+
 }

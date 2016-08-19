@@ -20,28 +20,28 @@ class Controller_Jsontest extends Controller {
 	} // End action_index
 
 	//update menu when button is clicked
-	public function action_updatemenuorder()
+	public function action_getjsonorder()
 	{
+		if ($this->request->is_ajax()) {
+			# code...
+			//array for json
+			$temp = array();
 
-		if($this->request->is_ajax())
-		{
-			$posted = $this->request->post();
+			//get db
+			$results = $this->model_menu->get_list()->execute()->as_array();
 
-			$jsonparent = json_decode($posted['jsonparent']);
-
-			foreach ($jsonparent as $key =>$val) {
-				$data = array(
-					'menuname' => $posted['menuname'][$key],
-					'orderlist' => $key,
-					'levels' => $posted['levels'][$key],
-					'parents' => $val->parent_id
-				);
-				$this->model_menu->update_order($data);
-			}
-
-			echo 'Saved in DB';	
+			echo json_encode($results);
+			
+		//still bug (in development)\\
+			$this->response->headers('Content-Type','application/json');
+			//$this->request->headers['Content-Type'] = 'application/json';
+			//$this->request->response = json_encode($results);
+			//$this->content = json_encode($results);
+			$this->response->body(json_encode($results));
+			$this->response->render();
+		//\\still bug (in development)//
 		}
 		exit;
-	}//End of updatemenuorder
+	}//End getjsonorder
 
-} // End Menu Controller
+} // End
