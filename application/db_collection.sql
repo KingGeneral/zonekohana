@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 19, 2016 at 12:09 PM
+-- Generation Time: Aug 22, 2016 at 04:11 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 5.6.23
 
@@ -27,10 +27,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `mdjsons` (
-  `id` int(3) NOT NULL,
+  `id` int(3) UNSIGNED NOT NULL,
   `name` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `street` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
-  `phone` int(20) NOT NULL
+  `phone` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -38,9 +38,9 @@ CREATE TABLE `mdjsons` (
 --
 
 INSERT INTO `mdjsons` (`id`, `name`, `street`, `phone`) VALUES
-(1, 'John', 'Doe', 555),
-(2, 'Anna', 'Tram', 532),
-(3, 'Poet', 'Era', 125);
+(1, 'John', 'Doe', '555'),
+(2, 'Anna', 'Tram', '532'),
+(3, 'Poet', 'Era', '125');
 
 -- --------------------------------------------------------
 
@@ -49,7 +49,7 @@ INSERT INTO `mdjsons` (`id`, `name`, `street`, `phone`) VALUES
 --
 
 CREATE TABLE `menus` (
-  `id` int(3) NOT NULL,
+  `id` int(3) UNSIGNED NOT NULL,
   `menu` varchar(30) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `orderlist` varchar(3) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `levels` varchar(3) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
@@ -77,7 +77,7 @@ INSERT INTO `menus` (`id`, `menu`, `orderlist`, `levels`, `parents`) VALUES
 --
 
 CREATE TABLE `productions` (
-  `id` int(5) NOT NULL,
+  `id` int(5) UNSIGNED NOT NULL,
   `username` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `product` varchar(50) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `quantity` int(2) NOT NULL,
@@ -139,17 +139,17 @@ ALTER TABLE `productions`
 -- AUTO_INCREMENT for table `mdjsons`
 --
 ALTER TABLE `mdjsons`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `menus`
 --
 ALTER TABLE `menus`
-  MODIFY `id` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(3) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `productions`
 --
 ALTER TABLE `productions`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(5) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

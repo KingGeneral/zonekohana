@@ -33,12 +33,12 @@ class Controller_Jsontest extends Controller {
 			echo json_encode($results);
 			
 		//still bug (in development)\\
-			$this->response->headers('Content-Type','application/json');
+			//$this->response->headers('Content-Type','application/json');
 			//$this->request->headers['Content-Type'] = 'application/json';
 			//$this->request->response = json_encode($results);
 			//$this->content = json_encode($results);
-			$this->response->body(json_encode($results));
-			$this->response->render();
+			//$this->response->body(json_encode($results));
+			//$this->response->render();
 		//\\still bug (in development)//
 		}
 		exit;

@@ -40,8 +40,16 @@ $(document).ready(function(){
             url: based_url+'jsontest/getjsonorder',
             success : function(response){
                 // alert(data),
-                console.log(response);
-                //var json_obj = $.parseJSON(data);
+                //console.log(response);
+                //var json_obj = response;
+                //console.log(json_obj);
+                //var  json_objs = $.parseJSON(json_obj);
+                var  json_objs = $.parseJSON(response);
+                console.log(json_objs);
+                document.getElementById("test3").innerHTML = 
+                json_objs[0].name + '-' + json_objs[0].street + '-' + json_objs[0].phone+ '<br/>'
+                +json_objs[1].name + '-' + json_objs[1].street + '-' + json_objs[1].phone+ '<br/>'
+                +json_objs[2].name + '-' + json_objs[2].street + '-' + json_objs[2].phone+ '<br/>';
             }
         });
     });
