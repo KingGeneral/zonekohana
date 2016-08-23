@@ -89,61 +89,116 @@ $(document).ready(function(){
 
                 // individual parse Int
                 // json_objs["menus"][0]["parents"] = parseInt(json_objs["menus"][0]["parents"]);
-                $.each(json_objs.menus, function(i, obj) { 
+                $.each(json_objs.menus, function(i, obj) {
+                    json_objs["menus"][i].children = [];
+                    json_objs["menus"][i]["id"] = parseInt(json_objs["menus"][i]["id"]);
                     json_objs["menus"][i]["parents"] = parseInt(json_objs["menus"][i]["parents"]);
                 });
 
+        //trample ver 11111111111111111
                 //add children
-                var objDict = json_objs.menus.reduce(function(p,c) {
-                    p[c.id] = c;
-                    c.children = [];
-                    return p;
-                }, {});
+                // var objDict = json_objs.menus.reduce(function(p,c) {
+                //     p[c.id] = c;
+                //     c.children = [];
+                //     return p;
+                // }, {});
 
+                // console.log(objDict);
+
+                // var json_objs1 = json_objs;
+
+        //trample ver 11111111111111111
+            //bug in root, only 1 root detected
                 //push children from 2 json
-                var tree = json_objs.menus.reduce(function(p,c) {
-                    if (!c.parents) {
-                        p = c;
-                    }
-                    else {
-                        objDict[c.parents].children.push(c);
-                    }
-                    return p;
-                }, {});
+                // var tree = json_objs1.menus.reduce(function(p,c) {
+                //     if (!c.parents) {
+                //         p = c;
+                //     }
+                //     else {
+                //         objDict[c.parents].children.push(c);
+                //     }
+                //     return p;
+                // }, {});
 
-                console.log(tree);
-                processTree(tree, document.getElementById("test5"),0);
+                // console.log(tree);
+
+        //trample ver 22222222222222222
+            //nested done - not bugged
+                var map = {}, node, roots = [];
+                for (var i = 0; i < json_objs.menus.length; i += 1) {
+                    node = json_objs.menus[i];
+                    node.children = [];
+                    map[node.id] = i; // use map to look-up the parents
+                    if (node.parents !== 0) {
+                        json_objs.menus[map[node.parents]].children.push(node);
+                    } else {
+                        roots.push(node);
+                    }
+                }
+                console.log(roots);
+
+        //create tree from trample ver 22222222222222222 
+                var $ol = $('<ol></ol>');
+                processTree(roots, $ol);
+                $ol.appendTo(document.getElementById("test5"));
+
+        //create tree from trample ver 11111111111111111
+                //processTree(tree, document.getElementById("test5"));
+
+        //create tree from trample ver 22222222222222222 - bugged length
+                //processTreeMod(myJsonString, document.getElementById("test5"));
+                
             }
         });
     });//test5
 
-    function processTree(node, element , index) {
-        //element inside li
-        var div = document.createElement('div');
-            div.className = "checkme"; //for checking depth
-            div.id = node.menu; //json var
-            div.innerHTML = node.menu; //json var
+    // function processTree(node, element) {
+    //     //element inside li
+    //     var div = document.createElement('div');
+    //         div.className = "checkme"; //for checking depth
+    //         div.id = node.menu; //json var
+    //         div.innerHTML = node.menu; //json var
 
-        //li
-        var li = document.createElement('li');
-            li.className = "mjs-nestedSortable-leaf"; //sortable plugin
-            li.id = "menuItem_"+node.id; //json var
-            li.appendChild(div);
+    //     //li
+    //     var li = document.createElement('li');
+    //         li.className = "mjs-nestedSortable-leaf"; //sortable plugin
+    //         li.id = "menuItem_"+node.id; //json var
+    //         li.appendChild(div);
 
-        element.appendChild(li);
+    //     element.appendChild(li);
 
-        if (node.children.length) {
-            var ol = document.createElement('ol');
-            li.appendChild(ol);
-            for (var i = 0; i < node.children.length; i++) {
-              processTree(node.children[i], ol);
-            }
+    //     if (node.children.length) {
+    //         var ol = document.createElement('ol');
+    //         li.appendChild(ol);
+    //         for (var i = 0; i < node.children.length; i++) {
+    //           processTree(node.children[i], ol);
+    //         }
+    //     }
+    // }
+
+    function processTree(node, list) {
+    
+        if($.isArray(node)){
+            $.each(node, function (key, value) {
+                processTree(value, list);
+            });
+            return;
         }
 
-        //kesalahan di tree bkn disini
-        // if (node.children.length === 0) {
-        //     console.log('a');
-        // }
+        if (node) {
+            var li = $('<li />');
+            if (node.menu) {
+                li.append($('<div class="checkme" id="'+node.menu+'">' + node.menu + '</div>'))
+                .attr('id', 'menuItem_'+node.id)
+                .addClass( "mjs-nestedSortable-leaf" );
+            }
+            //console.log(node.children.length);
+            if (node.children && node.children.length) {
+                var ol = $("<ol/>");
+                processTree(node.children, ol);
+                li.append(ol);
+            }
+            list.append(li);
+        }
     }
-
 });
