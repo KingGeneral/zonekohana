@@ -2,7 +2,7 @@
 
 class Controller_Menu extends Controller {
 	
-	private $model_name;
+	private $model_menu;
 	
 	public function __construct(Request $request, Response $response)
 	{

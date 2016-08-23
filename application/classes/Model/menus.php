@@ -50,4 +50,8 @@ class Model_Menus extends Kohana_Model
 		return $results;
 	}
 
+	//jsontest controller - testjson view
+	public function get_json(){
+
+	}
 }
