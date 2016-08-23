@@ -33,7 +33,7 @@
             <pre id="test4"></pre>
 
             <button type="button" class="btn btn-primary" id="btn-test5">Test-5-Call DB-List</button>
-            <pre id="test5-pre"><ol class="sortablemenu ui-sortable mjs-nestedSortable-branch mjs-nestedSortable-expanded" id="test5"></ol></pre>
+            <pre id="test5"></pre>
         </div>
 
         <!--script-->

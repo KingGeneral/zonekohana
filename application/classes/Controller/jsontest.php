@@ -90,13 +90,19 @@ class Controller_Jsontest extends Controller {
 		    echo json_encode($data,TRUE);
 
 //save points
-	        // $level = 0; //root
-	        // //$zen = $this->recList($array,$level);
-	        // //var_dump($zen);exit;
-	        // print $this->recList( $arrays, $level );
+		    // ::continue to experimental works code 001.
 		}
 		exit;
 	}
+
+//experimental works code 001.
+	//code 1 :: recursive to code 2
+	// $level = 0; //root
+    // //$zen = $this->recList($array,$level);
+    // //var_dump($zen);exit;
+    // print $this->recList( $arrays, $level );
+
+//function for experimental works code 001.
 	// public function recList( $arrays, $level) {
 	//    $r = '' ;
 	//    foreach ( $arrays as $i ) {
