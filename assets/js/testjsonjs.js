@@ -73,7 +73,7 @@ $(document).ready(function(){
             dataType:"json",
             success: function(response){
                 var json_objs = response;
-                
+
                 $.each(json_objs.menus, function(i, obj) {
                     json_objs["menus"][i].children = []; //push children varArr
                     json_objs["menus"][i]["id"] = parseInt(json_objs["menus"][i]["id"]); //convert String to int
@@ -81,7 +81,7 @@ $(document).ready(function(){
                 });
 
                 //nested push children
-                var db_id = {}, node, tree = [], list = $('<ol></ol>');
+                var db_id = {}, node, tree = [], list = $('<ol class="sortablemenu ui-sortable mjs-nestedSortable-branch mjs-nestedSortable-expanded"></ol>');
                 for (var i = 0; i < json_objs.menus.length; i += 1) {
                     node = json_objs.menus[i]; //path
                     db_id[node.id] = i; // parents
