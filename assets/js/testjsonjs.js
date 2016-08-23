@@ -78,61 +78,47 @@ $(document).ready(function(){
             dataType:"json",
             success: function(response){
                 console.log(response);
+                
+                //to make it json again
+                var json_object = response['menus'];
+                console.log(json_object);
+
+                //to make it still array
+                var json_objs = response;
+                console.log(json_objs);
+
+                // individual parse Int
+                // json_objs["menus"][0]["parents"] = parseInt(json_objs["menus"][0]["parents"]);
+                $.each(json_objs.menus, function(i, obj) { 
+                    json_objs["menus"][i]["parents"] = parseInt(json_objs["menus"][i]["parents"]);
+                });
+
+                //search parents id
+                var objDict = json_objs.menus.reduce(function(p,c) {
+                    p[c.id] = c;
+                    c.children = [];
+                    return p;
+                }, {});
+
+                //collaborate json
+                var tree = json_objs.menus.reduce(function(p,c) {
+                    if (!c.parents) {
+                        p = c;
+                    }
+                    else {
+                        objDict[c.parents].children.push(c);
+                    }
+                    return p;
+                }, {});
+
+                console.log(tree);
             }
         });
 
     });
 
     //experimental - start
-                // var json_objs = $.parseJSON(response);
-                // console.log(json_objs);
-
-                // var json_objs = JSON.parse(test);
-                // console.log(json_objs);
-                //console.log(json_objs);
-                //alert(json_objs);
-
-                //var json_objsk = $.parseJSON(response);
-                //var  json_yolo = $.parseJSON(response);  
-
-
-    // var json_objs = 
-    // {
-    //   menus: [{
-    //     "id": 1,
-    //     "menu": "Home",
-    //     "parents": 0
-    //   }, {
-    //     "id": 8,
-    //     "menu": "teshoho",
-    //     "parents": 0
-    //   }, {
-    //     "id": 3,
-    //     "menu": "Support",
-    //     "parents": 8
-    //   }, {
-    //     "id": 5,
-    //     "menu": "FAQ",
-    //     "parents": 3
-    //   }, {
-    //     "id": 4,
-    //     "menu": "Contact",
-    //     "parents": 3
-    //   }, {
-    //     "id": 6,
-    //     "menu": "testme",
-    //     "parents": 4
-    //   }, {
-    //     "id": 7,
-    //     "menu": "aaaa",
-    //     "parents": 6
-    //   }, {
-    //     "id": 2,
-    //     "menu": "About",
-    //     "parents": 3
-    //   }]
-    // }
-
+  
                 //console.log(json_objs);
                 //var x = json_objs.replaceAll("(\\d+)","\"$1\"");
                 //console.log(x);

@@ -83,7 +83,7 @@ class Controller_Jsontest extends Controller {
 			$results = $this->model_menu->get_list()->execute()->as_array();//DB
 
 			//to array - named menus
-			//$data = array('menus' => $results); 
+			$data = array('menus' => $results); 
 
 		    //force type TRUE >>> JSON_FORCE_OBJECT
 		    //wikia : //http://www.dyn-web.com/tutorials/php-js/json/array.php
