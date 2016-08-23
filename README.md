@@ -1,5 +1,5 @@
 # zonekohana
-*Kohana 3.3.6 tutorial
+*Kohana 3.3.6 tutorial 
 
 Tested 
 ----------------
@@ -9,7 +9,9 @@ What's inside
 ----------------
 * Form and validation
 * Nested Sortable List
-* AJAX request
+  * version 1 : direct in view (zonekohana/menu)
+  * version 2 : from javascript (zonekohana/jsontest)
+* AJAX request & response
 
 License
 -------
