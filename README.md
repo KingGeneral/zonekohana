@@ -1,6 +1,6 @@
 # zonekohana
-*Kohana 3.3.6 tutorial 
-*Please read the "read first.txt" at application folder
+* Kohana 3.3.6 tutorial
+* Please read the "read first.txt" at application folder
 
 Tested 
 ----------------
