@@ -69,7 +69,7 @@ $(document).ready(function(){
         });
     });
 
-    $('#btn-test5').click(function(event){
+    $('#btn-test5').one("click",function(event){
         event.preventDefault();
 
         $.ajax({
@@ -77,11 +77,11 @@ $(document).ready(function(){
             url: based_url +"jsontest/getjsonlist",
             dataType:"json",
             success: function(response){
-                console.log(response);
+                //console.log(response);
                 
                 //to make it json again
-                var json_object = response['menus'];
-                console.log(json_object);
+                // var json_object = response['menus'];
+                // console.log(json_object);
 
                 //to make it still array
                 var json_objs = response;
@@ -93,14 +93,14 @@ $(document).ready(function(){
                     json_objs["menus"][i]["parents"] = parseInt(json_objs["menus"][i]["parents"]);
                 });
 
-                //search parents id
+                //add children
                 var objDict = json_objs.menus.reduce(function(p,c) {
                     p[c.id] = c;
                     c.children = [];
                     return p;
                 }, {});
 
-                //collaborate json
+                //push children from 2 json
                 var tree = json_objs.menus.reduce(function(p,c) {
                     if (!c.parents) {
                         p = c;
@@ -112,58 +112,38 @@ $(document).ready(function(){
                 }, {});
 
                 console.log(tree);
+                processTree(tree, document.getElementById("test5"),0);
             }
         });
+    });//test5
 
-    });
+    function processTree(node, element , index) {
+        //element inside li
+        var div = document.createElement('div');
+            div.className = "checkme"; //for checking depth
+            div.id = node.menu; //json var
+            div.innerHTML = node.menu; //json var
 
-    //experimental - start
-  
-                //console.log(json_objs);
-                //var x = json_objs.replaceAll("(\\d+)","\"$1\"");
-                //console.log(x);
+        //li
+        var li = document.createElement('li');
+            li.className = "mjs-nestedSortable-leaf"; //sortable plugin
+            li.id = "menuItem_"+node.id; //json var
+            li.appendChild(div);
 
-                // var json_objs = {
-                //     menus: [
-                //     {"id":"1","menu":"Home","orderlist":"0","levels":"0","parents":"0"},
-                //     {"id":"8","menu":"teshoho","orderlist":"1","levels":"0","parents":"0"},
-                //     {"id":"3","menu":"Support","orderlist":"2","levels":"1","parents":"8"},
-                //     {"id":"5","menu":"FAQ","orderlist":"3","levels":"2","parents":"3"},
-                //     {"id":"4","menu":"Contact","orderlist":"4","levels":"2","parents":"3"},
-                //     {"id":"6","menu":"testme","orderlist":"5","levels":"3","parents":"4"},
-                //     {"id":"7","menu":"aaaa","orderlist":"6","levels":"4","parents":"6"},
-                //     {"id":"2","menu":"About","orderlist":"7","levels":"2","parents":"3"}]
-                // }
- 
+        element.appendChild(li);
 
-                //var json_objs = $.parseJSON(response);
-                //console.log(json_objs);
-                //var json_objs1 = $.parseJSON(json_objs);
-                //console.log(json_objs1);
+        if (node.children.length) {
+            var ol = document.createElement('ol');
+            li.appendChild(ol);
+            for (var i = 0; i < node.children.length; i++) {
+              processTree(node.children[i], ol);
+            }
+        }
 
-                // var json_objs1 = JSON.stringify(json_objs);
-                // console.log(json_objs1);
-
-    // var objDict = json_objs.menus.reduce(function(p,c) {
-    //     p[c.id] = c;
-    //     c.children = [];
-    //     return p;
-    // }, {});
-
-    // console.log(objDict);
-    // console.log(json_objs);
-
-    // var tree = json_objs.menus.reduce(function(p,c) {
-    //     if (!c.parents) {
-    //         p = c;
-    //     }
-    //     else {
-    //         objDict[c.parents].children.push(c);
-    //     }
-    //     return p;
-    // }, {});
-    // console.log(tree);
-//end of
-
+        //kesalahan di tree bkn disini
+        // if (node.children.length === 0) {
+        //     console.log('a');
+        // }
+    }
 
 });
