@@ -52,13 +52,11 @@ class Controller_Menu extends Controller {
 		//for information page - order by id
 		$menuid = $this->model_menu->get_list_id();
 
- 		$row = $res->as_object()->execute();
-
 		//view
 		$view = View::factory('zone/testing')
 		->set('menuorder',$menuall)
-		->set('menuorderObject', $row)
 		->set('menuid',$menuid)
+		->set('calllist',View::factory('zone/calllist')->set('menuorder',$menuall))
 		->bind('posted', $data);
 
 		$this->response->body($view);

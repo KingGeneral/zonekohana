@@ -153,7 +153,7 @@ Cookie::$salt = 'foobar'; //YOLO kohana
  
  //form pada route kanan bisa di custom
  
-Route::set('form', 'form(/<action>(/(<id>||<username>)))', array('id' => '\d+'))
+Route::set('formaa', 'formAja(/<action>(/(<id>||<username>)))', array('id' => '\d+'))
 	->defaults(array(
 		'controller' => 'form',
 		'action'     => 'index',
@@ -164,7 +164,8 @@ Route::set('form', 'form(/<action>(/<username>))', array('username' => '\D+'))
 		'controller' => 'form',
 		'action'     => 'index',
 	));
- 
+
+//default set
 Route::set('default', '(<controller>(/<action>(/<id>)))')
 	->defaults(array(
 		'controller' => 'menu',
