@@ -64,7 +64,8 @@ $(document).ready(function(){
         });
     });
 
-    $('#btn-test5').one("click",function(event){
+    //$('#btn-test5').one("click",function(event){
+    $('#btn-test5').click(function(event){
         event.preventDefault();
 
         $.ajax({
@@ -92,6 +93,7 @@ $(document).ready(function(){
                     }
                 }
                 processTree(tree, list);
+                document.getElementById("test5").innerHTML = "";
                 list.appendTo(document.getElementById("test5"));
             }
         });
